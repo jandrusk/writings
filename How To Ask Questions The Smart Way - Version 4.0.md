@@ -6,7 +6,8 @@
 
 **Revision History**  
 - Original revisions up to 3.10 (2014) by Eric S. Raymond & Rick Moen  
-- **Revision 4.0** – April 2026 – Major update incorporating AI assistants (Grok, ChatGPT, Claude, etc.), platform shifts to GitHub Issues/Discussions, Discord/Slack/Matrix, declining Stack Overflow activity, Markdown standards, and modern search practices.
+- **Revision 4.0** – April 2026 – Major update incorporating AI assistants (Grok, ChatGPT, Claude, etc.), platform shifts to GitHub Issues/Discussions, Discord/Slack/Matrix, declining Stack Overflow activity, Markdown standards, and modern search practices.  
+- **Revision 4.1** – April 2026 – Added new section on effective AI prompting.
 
 ---
 
@@ -60,63 +61,20 @@ Create a [minimal, reproducible example (MRE)](https://stackoverflow.com/help/mi
 
 ---
 
-## When You Ask
+## Effective AI Prompting for Technical Questions
 
-### Choose your forum carefully
+Since AI assistants are now the recommended first stop, knowing how to prompt them effectively is as important as knowing how to ask humans. Poor prompts lead to vague or incorrect answers — just like poor questions to humans. Good prompts turn AI into a powerful pair programmer or senior debugging partner.
 
-Post in the most appropriate place. Off-topic, cross-posted, or poorly targeted questions are often ignored.
+### Core Principles of Good Prompting
 
-**Recommended order in 2026:**
+- **Be specific and provide rich context** — Include exact error messages, stack traces, code snippets, versions, environment (OS, language version, dependencies), expected vs. actual behavior, and what you’ve already tried.
+- **Assign a role/persona** — Start with: “You are a senior Python backend engineer with 15 years of experience debugging production systems.” This improves reasoning quality.
+- **Specify the desired output format** — Ask for step-by-step reasoning, ranked causes, code with diffs, explanations, tests, or prevention tips. Example: “Rank the top 3 likely root causes. Then provide a minimal fix with a code diff and a unit test that would catch it.”
+- **Use chain-of-thought** — Instruct the AI to “think step by step” or break the problem down before giving a final answer.
+- **Iterate** — Treat the conversation as a dialogue. Follow up with “That didn’t work because…”, “Explain why this happens”, or “Improve the previous suggestion with these new details.”
+- **Provide constraints and goals** — Mention performance needs, security requirements, style guidelines, or edge cases.
+- **Ask for explanations, not just code** — Request: “Explain this function line by line and highlight any assumptions or potential failure points.”
 
-1. **AI assistants** – Best for quick explanations, debugging help, or learning.
-2. **Project-specific channels**:
-   - GitHub or GitLab Issues / Discussions (preferred by most modern open-source projects).
-   - Official Discord, Slack, Matrix, or Telegram groups (check the project’s README or website).
-   - Mailing lists (still used by some established projects).
-3. **Q&A platforms**:
-   - Stack Exchange network (Stack Overflow for programming, Super User, Server Fault, Ask Ubuntu, etc.). Note: New question volume has declined significantly as AI tools handle many common cases.
-   - Reddit (e.g., r/learnprogramming, r/programming, or tool/language-specific subreddits).
-4. **Other forums** – Linux distro forums, specialized boards, etc.
+### Example Effective Prompts
 
-Always search first using operators like `site:github.com` or `site:reddit.com`.
-
-Read the project’s `CONTRIBUTING.md` or support guidelines before posting.
-
-### Stack Overflow and Stack Exchange
-
-Stack Overflow remains valuable for high-quality, searchable answers, but usage has shifted. Search thoroughly first (including with AI tools). If posting:
-
-- Use clear Markdown formatting with syntax-highlighted code blocks.
-- Add relevant tags.
-- Edit your question as needed with new information.
-- Accept the best answer and upvote helpful ones.
-
-Many projects now direct users to their own GitHub Discussions instead.
-
-### Real-time chat (Discord, Slack, Matrix, etc.)
-
-These are excellent for interactive help. Lurk first, read the rules and pinned messages, and use threads where available.
-
-### Use meaningful, specific subject headers
-
-**Bad:** “Help me!” or “It doesn’t work”  
-**Good:** “PostgreSQL 16: Connection refused on Ubuntu 24.04 after Docker upgrade – exact error and `postgresql.conf` attached”
-
-Clear titles help people decide whether they can help and make the thread useful for future searchers.
-
-### Make it easy to reply
-
-Provide all necessary context upfront. On platforms that support it, use direct replies or mentions appropriately.
-
-### Write in clear, grammatical, correctly-spelled language
-
-Text-speak, excessive abbreviations, or poor grammar make your question harder to understand and less likely to receive good answers.
-
-### Send questions in accessible, standard formats
-
-- Use plain text or Markdown (widely supported).
-- Avoid proprietary file attachments unless specifically requested.
-- For code, logs, or config files, use fenced code blocks with language specifiers:
-
-```python
-# Your code here
+**Debugging prompt:**
